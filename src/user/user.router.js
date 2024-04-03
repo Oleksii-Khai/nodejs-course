@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/users', (request, response) => {
+router.post('/users', (request, response) => {
   return response.json({ route: 'get-users' });
 });
 
