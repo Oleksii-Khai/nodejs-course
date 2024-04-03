@@ -9,4 +9,9 @@ router.post('/users', async (request, response) => {
   return response.sendStatus(201);
 });
 
+router.get('/users', async (request, response) => {
+  const users = await db.query.users.findMany();
+  return response.status(200).json({ users });
+});
+
 module.exports = router;
