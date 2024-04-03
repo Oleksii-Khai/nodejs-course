@@ -1,7 +1,12 @@
 const router = require('express').Router();
 
-router.post('/users', (request, response) => {
-  return response.json({ route: 'get-users' });
+const db = require('../db');
+const { users } = require('../db/schema');
+
+router.post('/users', async (request, response) => {
+  const { body } = request;
+  await db.insert(users).values(body);
+  return response.sendStatus(201);
 });
 
 module.exports = router;
