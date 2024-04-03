@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const productRoutes = require('./product.routes');
 const { logRequest } = require('./middleware');
@@ -9,6 +10,9 @@ const app = express();
 
 const PORT = 3000;
 
+// app.use(express.json()); // built-in mdlwr to handle/parse requests with json body | is based on body-parser
+
+app.use(bodyParser.json());
 app.use(logRequest);
 app.use(productRoutes);
 app.use(errorResponder);
